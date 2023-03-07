@@ -230,7 +230,7 @@ body, html {
           } else {
             echo "The story cannot be completed." . $coon->error
           }
-          $sql = "SELECT id, Lastname, email, website, comment FROM MyGuests";
+          $sql = "SELECT name, email, website, comment FROM kvdizon_myguests";
           $result = $conn->query($sql);
 
           $conn->close();
