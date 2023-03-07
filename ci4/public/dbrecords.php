@@ -37,7 +37,7 @@
             if($results->num_rows > 0)
             {
                 while($row = $result->fetch_assoc()) {
-                    echo "id: " . $row["id"]. " - Name: " . $row["name"]. " - Email: " . $row["email"]. " - Website: " . $row["website"]. " - Comment: " . $row["comment"];
+                    echo "id: " . $row["id"]. " - Name: " . $row["fullname"]. " - Email: " . $row["email"]. " - Website: " . $row["website"]. " - Comment: " . $row["comment"];
                 }
             }
             else {
