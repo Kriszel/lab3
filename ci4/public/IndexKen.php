@@ -289,7 +289,7 @@ body, html {
         ?>
 
 
-      <form action="PHPFORM">
+ <!--     <form action="PHPFORM">
         <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
           <div class="w3-half">
             <input class="w3-input w3-border" type="text" placeholder="Name" required name="Name">
@@ -303,7 +303,32 @@ body, html {
         <button class="w3-button w3-black w3-right w3-section" type="submit">
           <i class="fa fa-paper-plane"></i> do NOT SEND MESSAGE
         </button>
+      </form> -->
+      <div class="PHPFORM" style="color:white">
+      <h2 >CONTACT ME</h2>
+      <p><span class="error">* required field</span></p>
+      <form method="post"  action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
+        Name: <input type="text" name="name" value="<?php echo $name;?>">
+        <span class="error">* <?php echo $nameErr;?></span>
+        <br><br>
+        E-mail: <input type="text" name="email" value="<?php echo $email;?>">
+        <span class="error">* <?php echo $emailErr;?></span>
+        <br><br>
+        Website: <input type="text" name="website" value="<?php echo $website;?>">
+        <span class="error"><?php echo $websiteErr;?></span>
+        <br><br>
+        Comment: <textarea name="comment" rows="5" cols="40"><?php echo $comment;?></textarea>
+        <br><br>
+        <input type="submit"  name="submit" value="Submit">  
       </form>
+      </div>
+      <?php
+      echo '<br><font color="gray">Your Input:</font><br><br>';
+      echo '<font color="pink">' . $name . '</font><br>';
+      echo '<font color="pink">' . $email . '</font><br>';
+      echo '<font color="pink">' . $website . '</font><br>';
+      echo '<font color="pink">' . $comment . '</font><br>';
+      ?>
     </div>
   </div>
 </div>
