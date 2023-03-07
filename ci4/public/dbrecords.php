@@ -31,13 +31,13 @@
             //creating connection
             $conn = new mysqli($servername, $username, $password, $dbname);
 
-            $sql = "SELECT id, fulnam, email, web, comment FROM Dizon_Records";
+            $sql = "SELECT id, name, email, web, comment FROM kvdizon_myguests";
             $result = $conn->query($sql);
             
             if($results->num_rows > 0)
             {
                 while($row = $result->fetch_assoc()) {
-                    echo "id: " . $row["id"]. " - Name: " . $row["fulnam"]. " - Email: " . $row["email"]. " - Website: " . $row["website"]. " - Comment: " . $row["comment"];
+                    echo "id: " . $row["id"]. " - Name: " . $row["name"]. " - Email: " . $row["email"]. " - Website: " . $row["website"]. " - Comment: " . $row["comment"];
                 }
             }
             else {
