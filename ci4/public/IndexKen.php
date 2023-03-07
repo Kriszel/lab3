@@ -207,6 +207,87 @@ body, html {
         <i class="fa fa-envelope fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Email: floating<br>
       </div>
       <p>Swing by for a cup of <i class="fa fa-coffee"></i>, or leave me a note:</p>
+      
+      <?php
+            $servername = "192.168.150.213";
+            $username = "webprogss211";
+            $password = "fancyR!ce36";
+            $dbname = "webprogss211";
+
+            //creating connection
+            $conn = new mysqli($servername, $username, $password, $dbname);
+
+            $name = $_POST['name'];
+            $email = $_POST['email'];
+            $website = $_POST['website'];
+            $comment = $_POST['comment'];
+
+          $sql = "INSERT INTO kvdizon_myguests VALUES ('$name', '$email', '$website', '$comment')";
+          
+          if($conn->multi_query($sql) === TRUE)
+          {
+            echo "New people added."
+          } else {
+            echo "The story cannot be completed." . $coon->error
+          }
+          $sql = "SELECT id, Lastname, email, website, comment FROM MyGuests";
+          $result = $conn->query($sql);
+
+          $conn->close();
+      ?>
+
+    <?php
+          // define variables and set to empty values
+          $nameErr = $emailErr = $genderErr = $websiteErr = "";
+          $name = $email = $gender = $comment = $website = "";
+
+          if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            if (empty($_POST["name"])) {
+              $nameErr = "Name is required";
+            } else {
+              $name = test_input($_POST["name"]);
+              // check if name only contains letters and whitespace
+              if (!preg_match("/^[a-zA-Z-' ]*$/",$name)) {
+                $nameErr = "Only letters and white space allowed";
+              }
+            }
+            
+            if (empty($_POST["email"])) {
+              $emailErr = "Email is required";
+            } else {
+              $email = test_input($_POST["email"]);
+              // check if e-mail address is well-formed
+              if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $emailErr = "Invalid email format";
+              }
+            }
+              
+            if (empty($_POST["website"])) {
+              $website = "";
+            } else {
+              $website = test_input($_POST["website"]);
+              // check if URL address syntax is valid (this regular expression also allows dashes in the URL)
+              if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$website)) {
+                $websiteErr = "Invalid URL";
+              }
+            }
+
+            if (empty($_POST["comment"])) {
+              $comment = "";
+            } else {
+              $comment = test_input($_POST["comment"]);
+            }
+
+          }
+
+          function test_input($data) {
+            $data = trim($data);
+            $data = stripslashes($data);
+            $data = htmlspecialchars($data);
+            return $data;
+          }
+        ?>
+
       <form action="/action_page.php" target="_blank">
         <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
           <div class="w3-half">
@@ -216,6 +297,7 @@ body, html {
             <input class="w3-input w3-border" type="text" placeholder="Email" required name="Email">
           </div>
         </div>
+        <input class="w3-input w3-border" type="text" placeholder="Website" required name="Website">
         <input class="w3-input w3-border" type="text" placeholder="Message" required name="Message">
         <button class="w3-button w3-black w3-right w3-section" type="submit">
           <i class="fa fa-paper-plane"></i> do NOT SEND MESSAGE
