@@ -287,8 +287,8 @@ body, html {
             return $data;
           }
         ?>
-        
-      <div class="PHPFORM" style="color:white">
+
+      <div class="PHPFORM" style="color:black">
       <h2 >CONTACT ME</h2>
       <p><span class="error">* required field</span></p>
       <form method="post"  action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
