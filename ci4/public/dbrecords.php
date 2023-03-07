@@ -31,7 +31,7 @@
             //creating connection
             $conn = new mysqli($servername, $username, $password, $dbname);
 
-            $sql = "SELECT id, name, email, web, comment FROM kvdizon_myguests";
+            $sql = "SELECT id, fullname, email, web, comment FROM kvdizon_myguests";
             $result = $conn->query($sql);
             
             if($results->num_rows > 0)
