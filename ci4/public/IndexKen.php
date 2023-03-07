@@ -226,9 +226,9 @@ body, html {
           
           if($conn->multi_query($sql) === TRUE)
           {
-            echo "New people added."
+            echo "New people added.";
           } else {
-            echo "The story cannot be completed." . $coon->error
+            echo "The story cannot be completed." . $coon->error;
           }
           $sql = "SELECT name, email, website, comment FROM kvdizon_myguests";
           $result = $conn->query($sql);
